@@ -6,7 +6,7 @@ public class Matrix {
   final static int MAXLENGTHBETWEENIDICES = 7;
 
   //Constructor
-  public void Matrix(){
+  public Matrix(){
     sizeOfSide = 0;
   }
 
@@ -47,7 +47,9 @@ public class Matrix {
 
   public void printMatrix(){
     int block_amount = 0;
-    System.out.printf("\n----------------\n");
+    System.out.printf("\n\t");
+    printHorizontalLine(sizeOfSide * MAXLENGTHBETWEENIDICES);
+    System.out.printf("\n\t");
     for(int i = 0; i < sizeOfSide; i++){
       for(int j = 0; j < sizeOfSide; j++){
         if(j != (sizeOfSide - i)-1){
@@ -67,12 +69,21 @@ public class Matrix {
         }
         printSpaceBlock( block_amount );
       }
-      System.out.printf("\n");
+      System.out.printf("\n\t");
     }
-    System.out.printf("\n----------------\n");
+    printHorizontalLine(sizeOfSide * MAXLENGTHBETWEENIDICES);
+    System.out.printf("\n");
   }
+
   static void printSpaceBlock(int lengthOfIndexChars){
     for(int i = 0; i < (MAXLENGTHBETWEENIDICES - lengthOfIndexChars); i++)
       System.out.printf(" ");
   }
+
+  static void printHorizontalLine(int length){
+    for(int i = 0; i < length; i++){
+      System.out.printf("-");
+    }
+  }
+
 }
