@@ -56,39 +56,52 @@ public class Matrix {
   }
 
   public void printMatrix(){
-    int block_amount = 0;
+    //blockAmount is the amount of chars in one integer being printed
+    int blockAmount = 0;
+
+    //print the dividing line
     System.out.printf("\n\t");
     printHorizontalLine(sizeOfSide * MAXLENGTHBETWEENIDICES);
     System.out.printf("\n\t");
+
+    //loop through all indices
     for(int i = 0; i < sizeOfSide; i++){
       for(int j = 0; j < sizeOfSide; j++){
+        //is the current index one of the diagonal indices?
         if(j != (sizeOfSide - i)-1){
+          //if not, print the current value
           System.out.printf("%d", matrix[i][j]);
         }
         else{
+          //if it is, print it with color escape codes
           System.out.printf("\u001B[33m%d\u001B[0m", matrix[i][j]);
         }
-        //Math.round(Math.sqrt((Double.valueOf(matrix[i][j]))))
+        //is the current matrix value 0?  if so, log would be undefined so set to 1
         if(matrix[i][j] == 0){
-          block_amount = 1;
+          blockAmount = 1;
         }
         else{
-          //log 10 to get the amount of chars printed, some type conversions so no errors are thrown, and adding 1 since the value is rounded down to
-          //cast it back to an int.  we floor the value because we want to know the minimum amount of times 10 is multiplied to fit neatly in the given value
-          block_amount = (int) Math.floor(Math.log10( Double.valueOf(matrix[i][j]) )) + 1;
+          //log 10 to get the length of the integer printed in terms of characters
+          //use floor function to only accept all values that still don't let the number go over the given amount
+          blockAmount = (int) Math.floor(Math.log10( Double.valueOf(matrix[i][j]) )) + 1;
         }
-        printSpaceBlock( block_amount );
+        printSpaceBlock( blockAmount );
       }
       System.out.printf("\n\t");
     }
+
+    //print the dividing line
     printHorizontalLine(sizeOfSide * MAXLENGTHBETWEENIDICES);
     System.out.printf("\n");
+
   }
 
 
 
 
   private void printSpaceBlock(int lengthOfIndexChars){
+    //print a block of spaces given the length of a string before it, to keep it
+    //all evenly spaced apart, no matter the length of the string.
     for(int i = 0; i < (MAXLENGTHBETWEENIDICES - lengthOfIndexChars); i++)
       System.out.printf(" ");
   }
