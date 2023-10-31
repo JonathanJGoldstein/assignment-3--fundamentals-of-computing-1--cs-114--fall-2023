@@ -1,9 +1,9 @@
 import java.lang.Math;
 
 public class Matrix {
-  static int [][] matrix;
-  static int sizeOfSide;
-  final static int MAXLENGTHBETWEENIDICES = 7;
+  private int [][] matrix;
+  private int sizeOfSide;
+  final private int MAXLENGTHBETWEENIDICES = 7;
 
   //Constructor
   public Matrix(){
@@ -13,10 +13,13 @@ public class Matrix {
   public void initializeMatrix(int size){
     if(size > 0){
       //safely can create a matrix
+
+      //store 0 at each index in matrix
       matrix = new int[size][size];
       for(int i = 0; i < size; i++)
         for(int j = 0; j < size; j++)
           matrix[i][j] = 0;
+      //set the private side value to the given size input
       sizeOfSide = size;
     }
     else{
@@ -25,6 +28,7 @@ public class Matrix {
   }
 
   public void populateMatrix(){
+    //loop through all indices and store the current 1D index there
     for(int i = 0; i < sizeOfSide; i++)
         for(int j = 0; j < sizeOfSide; j++)
           matrix[i][j] = (i*sizeOfSide)+j;
@@ -37,8 +41,14 @@ public class Matrix {
     for(int i = 0; i < sizeOfSide/2; i++){
       for(int j = 0; j < sizeOfSide; j++){
         if(j != (sizeOfSide - i)-1){
+          //the current index is not apart of the diagonal, therefore it can be flipped!
+
+          //store current value at the idex into the temporary variable
           temp = matrix[i][j];
+
+          //store the opposite side's value at the current index
           matrix[i][j] = matrix[(sizeOfSide - i) - 1][(sizeOfSide - j) - 1];
+          //store the original index's value to the opposite side
           matrix[sizeOfSide - i - 1][sizeOfSide - j - 1] = temp;
         }
       }
@@ -75,12 +85,15 @@ public class Matrix {
     System.out.printf("\n");
   }
 
-  static void printSpaceBlock(int lengthOfIndexChars){
+
+
+
+  private void printSpaceBlock(int lengthOfIndexChars){
     for(int i = 0; i < (MAXLENGTHBETWEENIDICES - lengthOfIndexChars); i++)
       System.out.printf(" ");
   }
 
-  static void printHorizontalLine(int length){
+  private void printHorizontalLine(int length){
     for(int i = 0; i < length; i++){
       System.out.printf("-");
     }
