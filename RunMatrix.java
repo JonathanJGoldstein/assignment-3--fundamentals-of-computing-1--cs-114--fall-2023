@@ -2,14 +2,14 @@ import java.util.Scanner;
 
 public class RunMatrix {
   public static void main(String[] args) {
-    int user_input = 0;
-    Scanner myscanner = new Scanner(System.in);
-    Matrix myMatrix = new Matrix();
-    System.out.printf("\n\tPlease enter the size of your matrix: ");
-    user_input = myscanner.nextInt();
-    System.out.printf("\n\tyour matrix is %d x %d\n", user_input, user_input);
+    int userInput = 0;
+    Scanner myScanner = new Scanner(System.in);
 
-    myMatrix.initializeMatrix(user_input);
+    System.out.printf("\n\tPlease enter the size of your matrix: ");
+    userInput = myScanner.nextInt();
+    System.out.printf("\n\tyour matrix is %d x %d\n", userInput, userInput);
+
+    Matrix myMatrix = new Matrix(userInput);
     System.out.printf("\n\tprinting matrix with default values:");
     myMatrix.printMatrix();
 
@@ -19,10 +19,10 @@ public class RunMatrix {
     myMatrix.printMatrix();
 
     System.out.printf("\tflipping matrix...");
-    myMatrix.invertMatrixDiagonal();
+    myMatrix.flipMatrix();
     System.out.printf("matrix flipped\n\n\tprintng flipped matrix:");
     myMatrix.printMatrix();
 
-    myscanner.close();
+    myScanner.close();
   }
 }
