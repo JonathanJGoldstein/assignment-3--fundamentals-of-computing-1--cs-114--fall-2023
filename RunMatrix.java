@@ -4,12 +4,13 @@ public class RunMatrix {
   public static void main(String[] args) {
     int userInput = 0;
     Scanner myScanner = new Scanner(System.in);
+    Matrix myMatrix;
 
     System.out.printf("\n\tPlease enter the size of your matrix: ");
     userInput = myScanner.nextInt();
     System.out.printf("\n\tyour matrix is %d x %d\n", userInput, userInput);
 
-    Matrix myMatrix = new Matrix(userInput);
+    myMatrix = new Matrix(userInput);
     System.out.printf("\n\tprinting matrix with default values:");
     myMatrix.printMatrix();
 
