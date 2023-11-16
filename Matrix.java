@@ -19,7 +19,7 @@ public class Matrix {
     }
     else{
       //throw an exception if the given size is less than 1
-      throw new IllegalArgumentException("ERROR :: Cannot initialize Matrix of size less than 1!");
+      throw new IllegalArgumentException("Cannot initialize Matrix of size less than 1!");
     }
   }
 
